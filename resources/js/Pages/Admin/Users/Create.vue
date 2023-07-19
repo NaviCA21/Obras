@@ -167,7 +167,7 @@ const submit = () => {
                         track-by="id"
                     />
                 </div>
-                <div class="mt-4">
+                <!-- <div class="mt-4">
                     <InputLabel for="permissions" value="Permissions" />
                     <VueMultiselect
                         v-model="form.permissions"
@@ -178,7 +178,7 @@ const submit = () => {
                         label="name"
                         track-by="id"
                     />
-                </div>
+                </div> -->
 
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton

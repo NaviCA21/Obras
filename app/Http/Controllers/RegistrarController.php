@@ -26,7 +26,7 @@ class RegistrarController extends Controller
         return Inertia::render('Registrar/Registrar', [
             'registros' => RegistroResource::collection(
                 Registro::query()
-                    ->with('herramientas') // Cargar ansiosamente las relaciones de herramientas
+                    ->with('herramientas') // Cargar las relaciones de herramientas
                     ->when($request->input('buscar'), function ($query, $buscar) {
                         $query->where('visitante', 'like', "%{$buscar}%");
                     })

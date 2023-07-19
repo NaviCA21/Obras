@@ -20,7 +20,7 @@ const { hasRole } = usePermission();
                     ><span class="text-indigo-400">.</span>
                 </h1>
                 <p class="text-slate-700 text-md mb-2 text-center">
-                    Bienvenido de vuelta
+                    Bienvenido
                 </p>
                 <a
                     href="#"

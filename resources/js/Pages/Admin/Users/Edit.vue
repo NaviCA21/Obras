@@ -124,7 +124,7 @@ watch(
                         track-by="id"
                     />
                 </div>
-                <div class="mt-4">
+                <!-- <div class="mt-4">
                     <InputLabel for="permissions" value="Permissions" />
                     <VueMultiselect
                         v-model="form.permissions"
@@ -135,7 +135,7 @@ watch(
                         label="name"
                         track-by="id"
                     />
-                </div>
+                </div> -->
 
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton
@@ -189,7 +189,7 @@ watch(
                 </Table>
             </div>
         </div>
-        <div
+        <!-- <div
             class="mt-6 max-w-6xl mx-auto bg-slate-100 shadow-lg rounded-lg p-6"
         >
             <h1 class="text-2xl font-semibold text-indigo-700">PERMISOS</h1>
@@ -233,7 +233,7 @@ watch(
                     </template>
                 </Table>
             </div>
-        </div>
+        </div> -->
     </AdminLayout>
 </template>
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>

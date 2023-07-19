@@ -21,7 +21,7 @@ const { hasRole } = usePermission();
                 ><GlobeAltIcon class="h-8 w-8 text-white"
             /></i>
             <div class="logo_name flex justify-center uppercase text-center">
-                MP - PUNO
+                MPP - PUNO
             </div>
         </div>
         <ul class="nav-list space-y-4">
@@ -59,7 +59,7 @@ const { hasRole } = usePermission();
                 </Link>
                 <span class="tooltip">Usuarios</span>
             </li>
-            <li>
+            <!-- <li>
                 <Link
                     :href="route('roles.index')"
                     :active="route().current('roles.index')"
@@ -71,8 +71,8 @@ const { hasRole } = usePermission();
                     <span class="links_name">Roles</span>
                 </Link>
                 <span class="tooltip">Roles</span>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <Link
                     :href="route('permissions.index')"
                     :active="route().current('permissions.index')"
@@ -84,7 +84,7 @@ const { hasRole } = usePermission();
                     <span class="links_name">Permisos</span>
                 </Link>
                 <span class="tooltip">Permisos</span>
-            </li>
+            </li> -->
             <li>
                 <Link
                     :href="route('oficinas.index')"
@@ -131,7 +131,7 @@ const { hasRole } = usePermission();
                         alt="profileImg"
                     />
                     <div class="name_job">
-                        <div class="name">NOmbre</div>
+                        <div class="name">Nombre</div>
                         <div class="job">Oficina</div>
                     </div>
                 </div>

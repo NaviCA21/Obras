@@ -13,7 +13,7 @@ class OficinaSeeder extends Seeder
      */
     public function run(): void
     {
-        Oficina::create(['nombreOficina' => 'puerta']);
+        Oficina::create(['nombreOficina' => 'Alcaldia']);
         Oficina::create(['nombreOficina' => 'secretaria']);
         Oficina::create(['nombreOficina' => 'tesoreria']);
     }
