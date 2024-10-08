@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -13,8 +12,14 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => 'admin']);
-        // Role::create(['name' => 'moderador']);
-        Role::create(['name' => 'usuario']);
+        // Verifica si el rol 'admin' ya existe, si no, lo crea
+        if (!Role::where('name', 'admin')->exists()) {
+            Role::create(['name' => 'admin']);
+        }
+
+        // Verifica si el rol 'usuario' ya existe, si no, lo crea
+        if (!Role::where('name', 'usuario')->exists()) {
+            Role::create(['name' => 'usuario']);
+        }
     }
 }

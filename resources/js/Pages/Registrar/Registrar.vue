@@ -185,6 +185,7 @@ const submit = () => {
                                     <TableHeaderCell>DNI</TableHeaderCell>
                                     <TableHeaderCell>IMAGEN</TableHeaderCell>
                                     <TableHeaderCell>VISITANTE</TableHeaderCell>
+                                    <!-- <TableHeaderCell>SEXO</TableHeaderCell> -->
                                     <TableHeaderCell>ENTIDAD</TableHeaderCell>
                                     <TableHeaderCell>MOTIVO</TableHeaderCell>
                                     <TableHeaderCell>USUARIO</TableHeaderCell>
@@ -220,6 +221,9 @@ const submit = () => {
                                     <TableDataCell>{{
                                         registro.visitante
                                     }}</TableDataCell>
+                                    <!-- <TableDataCell>
+            {{ registro.sexo === 1 ? 'Masculino' : 'Femenino' }}
+          </TableDataCell> -->
                                     <TableDataCell>{{
                                         registro.entidad
                                     }}</TableDataCell>
@@ -240,6 +244,7 @@ const submit = () => {
                                                     registro.idControl,
                                                     registro.dni,
                                                     registro.visitante,
+                                                    // registro.sexo,
                                                     registro.observacion,
                                                     registro.created_at
                                                 )

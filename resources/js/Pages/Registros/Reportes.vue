@@ -110,6 +110,7 @@ export default {
                 { data: "idControl", title: "ID" },
                 { data: "dni", title: "DNI" },
                 { data: "visitante", title: "VISITANTE" },
+                { data: "sexo", title: "SEXO" },
                 { data: "entidad", title: "ENTIDAD" },
                 { data: "motivo", title: "MOTIVO" },
                 { data: "nombre_usuario", title: "USUARIO" },

@@ -67,6 +67,7 @@ const props = defineProps({
 const form = useForm({
     dni: props.visitanteArray?.numeroDocumento ?? props.dni,
     visitante: props.visitanteArray?.nombre ?? "No se encontraron datos",
+    sexo: "",
     entidad: "",
     motivo: "",
     observacion: "",
@@ -138,6 +139,7 @@ function submitForm() {
     const missingFields = [];
     if (!form.dni) missingFields.push("DNI");
     if (!form.visitante) missingFields.push("Visitante");
+    if (!form.sexo) missingFields.push("Sexo");
     if (!form.entidad) missingFields.push("Entidad");
     if (!form.motivo) missingFields.push("Motivo");
     if (!form.usuario_id) missingFields.push("Usuario ID");
@@ -197,32 +199,20 @@ if (props.error) {
     </div> -->
     <AuthenticatedLayout>
         <template #header>
-            <h2
-                class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
-            >
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 Registrar
             </h2>
         </template>
         <div class="max-w-4xl mx-auto p-5 rounded-xl mt-4 bg-white">
             <div class="mt-6">
-                <form
-                    class="grid grid-cols-3 gap-6"
-                    @submit.prevent="submitForm"
-                >
+                <form class="grid grid-cols-3 gap-6" @submit.prevent="submitForm">
                     <div class="col-span-2">
-                        <InputLabel
-                            for="dni"
-                            value="Documento Nacional de Identidad"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                        <InputLabel for="dni" value="Documento Nacional de Identidad"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="dni"
-                            type="text"
+                        <TextInput id="dni" type="text"
                             class="bg-gray-100 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            v-model="form.dni"
-                            :readonly="visitanteArray"
-                        ></TextInput>
+                            v-model="form.dni" :readonly="visitanteArray"></TextInput>
                     </div>
                     <div class="row-span-6 flex justify-center text-center">
                         <div class="modal">
@@ -231,172 +221,115 @@ if (props.error) {
                             </button>
                             <div class="border-black border-t-2 mt-1 shadow-sm">
                                 <span class="font-bold">Vista en Vivo</span>
-                                <video
-                                    id="camera"
-                                    class="camera-video"
-                                    autoplay
-                                ></video>
+                                <video id="camera" class="camera-video" autoplay></video>
                             </div>
-                            <div
-                                class="border-black border-t-2 mt-5 shadow-2xl"
-                            >
+                            <div class="border-black border-t-2 mt-5 shadow-2xl">
                                 <span class="font-bold">Vista previa</span>
-                                <img
-                                    :src="state.previewSrc"
-                                    class="camera-video"
-                                />
+                                <img :src="state.previewSrc" class="camera-video" />
                             </div>
                         </div>
                     </div>
                     <div class="col-span-2 -mt-4">
-                        <InputLabel
-                            for="nombre"
-                            value="Nombre completo del visitante"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
-                        <TextInput
-                            id="nombre"
-                            type="text"
+                        <InputLabel for="nombre" value="Nombre completo del visitante"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
+                        <TextInput id="nombre" type="text"
                             class="bg-gray-100 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            v-model="form.visitante"
-                            autocomplete="nombre"
-                            :readonly="visitanteArray"
-                        />
+                            v-model="form.visitante" autocomplete="nombre" :readonly="visitanteArray" />
                     </div>
                     <div class="-mt-4">
-                        <InputLabel
-                            for="usuario"
-                            value="Usuario"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                        <InputLabel for="usuario" value="Usuario" class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="usuario"
-                            type="text"
-                            v-model="props.auth.user.name"
+                        <TextInput id="usuario" type="text" v-model="props.auth.user.name"
                             class="bg-gray-100 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            placeholder="Entidad proveniente"
-                            autocomplete="entidad"
-                            readonly
-                        />
+                            placeholder="Entidad proveniente" autocomplete="entidad" readonly />
                     </div>
                     <div class="-mt-4">
-                        <InputLabel
-                            for="oficina"
-                            value="Oficina de ingreso"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                        <InputLabel for="oficina" value="Oficina de ingreso"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="oficina"
-                            type="text"
-                            v-model="props.auth.user.oficina_id"
+                        <TextInput id="oficina" type="text" v-model="props.auth.user.oficina_id"
                             class="bg-gray-100 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            placeholder="Motivo de visita"
-                            autocomplete="motivo"
-                            readonly
-                        />
+                            placeholder="Motivo de visita" autocomplete="motivo" readonly />
                     </div>
                     <div class="-mt-4">
-                        <InputLabel
-                            for="hora"
-                            value="hora"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        ></InputLabel>
+                        <InputLabel for="hora" value="hora" class="font-semibold text-gray-600 py-2 uppercase"></InputLabel>
 
-                        <div
-                            id="hora"
-                            type="text"
+                        <div id="hora" type="text"
                             class="bg-gray-100 appearance-none block w-full bg-grey-lighter text-grey-darker border border-gray-300 rounded-lg h-10 px-4 font-medium"
-                            autocomplete="hora"
-                        >
+                            autocomplete="hora">
                             <CurrentTimeTwo></CurrentTimeTwo>
                         </div>
                     </div>
                     <div class="-mt-4">
-                        <InputLabel
-                            for="herramientas"
-                            value="Herramientas"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
-                        <PrimaryButton
-                            id="herramientas"
-                            type="button"
-                            @click="showModal = true"
-                            class="flex bg-gray-300 appearance-none w-full bg-grey-lighter border border-grey-lighter rounded-lg h-10 px-4 text-white justify-center"
-                            >Agregar Herramienta</PrimaryButton
-                        >
-                        <HerramientaModel
-                            v-if="showModal"
-                            :herramienta="herramientas[herramientaAEditar]"
-                            @guardar="guardarHerramienta"
-                            @cancelar="cancelarHerramienta"
-                        />
-                        <input
-                            type="hidden"
-                            name="herramientas"
-                            :value="JSON.stringify(herramientas)"
-                        />
+                        <InputLabel for="herramientas" value="Herramientas"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
+                        <PrimaryButton id="herramientas" type="button" @click="showModal = true"
+                            class="flex bg-gray-300 appearance-none w-full bg-grey-lighter border border-grey-lighter rounded-lg h-10 px-4 text-white justify-center">
+                            Agregar Herramienta</PrimaryButton>
+                        <HerramientaModel v-if="showModal" :herramienta="herramientas[herramientaAEditar]"
+                            @guardar="guardarHerramienta" @cancelar="cancelarHerramienta" />
+                        <input type="hidden" name="herramientas" :value="JSON.stringify(herramientas)" />
                     </div>
                     <div class="-mt-4">
-                        <InputLabel
-                            for="entidad"
-                            value="Entidad de origen"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                        <InputLabel for="entidad" value="Entidad de origen"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="entidad"
-                            type="text"
-                            v-model="form.entidad"
+                        <TextInput id="entidad" type="text" v-model="form.entidad"
                             class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            placeholder="Entidad proveniente"
-                            autocomplete="entidad"
-                            autofocus
-                        />
+                            placeholder="Entidad proveniente" autocomplete="entidad" autofocus />
                     </div>
-                    <div class="-mt-4">
-                        <InputLabel
-                            for="motivo"
-                            value="Motivo de visita"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                    <!-- <div class="-mt-4">
+                        <InputLabel for="sexo" value="sexo del visitante"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="motivo"
-                            type="text"
-                            v-model="form.motivo"
+                        <select id="sexo" v-model="form.sexo"
                             class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                            placeholder="Motivo de visita"
-                            autocomplete="motivo"
-                        />
+                            autocomplete="sexo" autofocus>
+                            <option value="">Selecciona el sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Transformer">Transformer</option>
+                        </select>
+                    </div> -->
+                    <div class="-mt-4">
+                        <label for="sexo" class="font-semibold text-gray-600 py-2 uppercase">
+                            Sexo del visitante
+                        </label>
+
+                        <div class="flex items-center">
+                            <input type="radio" id="masculino" value="1" v-model="form.sexo" class="h-6 w-6 mr-2" />
+                            <label for="masculino">Masculino</label>
+
+                            <input type="radio" id="femenino" value="0" v-model="form.sexo" class="h-6 w-6 ml-4 mr-2" />
+                            <label for="femenino">Femenino</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="-mt-4">
+                        <InputLabel for="motivo" value="Motivo de visita"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
+
+                        <TextInput id="motivo" type="text" v-model="form.motivo"
+                            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                            placeholder="Motivo de visita" autocomplete="motivo" />
                     </div>
                     <div class="col-span-2 -mt-4">
-                        <InputLabel
-                            for="observacion"
-                            value="Observación"
-                            class="font-semibold text-gray-600 py-2 uppercase"
-                        />
+                        <InputLabel for="observacion" value="Observación"
+                            class="font-semibold text-gray-600 py-2 uppercase" />
 
-                        <TextInput
-                            id="observacion"
-                            type="text"
-                            v-model="form.observacion"
+                        <TextInput id="observacion" type="text" v-model="form.observacion"
                             class="min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4"
-                            placeholder="Agregrue cualquier observación..."
-                            autocomplete="observacion"
-                        />
+                            placeholder="Agregrue cualquier observación..." autocomplete="observacion" />
                     </div>
                     <div class="flex justify-between col-span-3">
                         <button
-                            class="hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-50 bg-red-500 shadow-lg shadow-red-500/50 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
-                        >
+                            class="hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-50 bg-red-500 shadow-lg shadow-red-500/50 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">
                             Cancelar
                         </button>
-                        <button
-                            type="submit"
-                            class="hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-50 bg-green-500 shadow-lg shadow-green-500/50 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                        >
+                        <button type="submit"
+                            class="hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-50 bg-green-500 shadow-lg shadow-green-500/50 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             Guardar
                         </button>
                     </div>
@@ -411,10 +344,7 @@ if (props.error) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            v-for="(herramienta, index) in herramientas"
-                            :key="herramienta.serie"
-                        >
+                        <tr v-for="(herramienta, index) in herramientas" :key="herramienta.serie">
                             <td>{{ herramienta.nombreHerramienta }}</td>
                             <td>{{ herramienta.marca }}</td>
                             <td>{{ herramienta.serie }}</td>
@@ -438,6 +368,7 @@ if (props.error) {
     object-fit: cover;
     width: 100%;
 }
+
 .transition-opacity {
     transition: opacity 10s ease-in-out;
 }

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->increments('idControl');
             $table->string('dni', 8);
             $table->string('visitante', 255);
+            // $table->string('sexo', 25);
+            $table->boolean('sexo')->default(false);
             $table->string('entidad', 255);
             $table->string('motivo', 255)->nullable();
             $table->string('observacion', 255)->nullable();

@@ -18,8 +18,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
-
+use App\Http\Controllers\MaterialController;
 
 Route::get('/', function () {
     return Inertia::render('Dashboard');
@@ -32,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/posts', PostController::class);
     Route::resource('/oficinas', OficinaController::class);
     Route::resource('/registros', RegistroController::class);
+    Route::resource('/materiales', MaterialController::class); // Nueva ruta para materiales
 
     Route::get('/registrar/create/{dni}', [RegistrarController::class, 'create'])->name('registrar.create');
 
@@ -51,8 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users/{user}/roles/{role}', RemoveRoleFromUserController::class)
         ->name('users.roles.destroy');
 });
-
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

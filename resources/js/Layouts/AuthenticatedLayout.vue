@@ -82,6 +82,20 @@ const { hasRole } = usePermission();
                         </div>
                         <div class="flex-1 group">
                             <NavLinkTwo
+                                :href="route('materiales.index')"
+                                :active="route().current('materiales.index')"
+                            >
+                                <span class="block px-1 pt-1 pb-2">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span class="block text-md pb-1">Materiales</span>
+                                </span>
+                            </NavLinkTwo>
+                        </div>
+
+
+
+                        <div class="flex-1 group">
+                            <NavLinkTwo
                                 :href="route('registros.index')"
                                 :active="route().current('registros.index')"
                             >

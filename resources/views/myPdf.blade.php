@@ -83,16 +83,17 @@
                         <li>No se registraron herramientas</li>
                     </ul>
                 @endif
+                <li>Sexo del Visitante: {{ $registro->sexo }}</li>
                 <li>Entidad de origen del Visitante: {{ $registro->entidad }}</li>
                 <li>Motivo de visita del Visitante: {{ $registro->motivo }}</li>
                 <li>Observaciones al Visitante: {{ $registro->observacion }}</li>
-                @if ($registro->img_path)
+                {{-- @if ($registro->img_path)
                     <img src="{{ $registro->img_path }}" alt="Foto del visitante">
                 @else
                     <p>No se encontró la foto del visitante</p>
                 @endif
                 <!-- Mostrar la ruta de la imagen -->
-                <p>Ruta de la imagen: {{ $registro->img_path }}</p>
+                <p>Ruta de la imagen: {{ $registro->img_path }}</p> --}}
 
             </ul>
         </div>

@@ -98,7 +98,7 @@ const generatePdf = (idControl) => {
             <h2
                 class="uppercase p-3 bg-black rounded-full text-white w-full font-semibold text-center"
             >
-                Registros REALIZADOS
+                REGISTROS Y MAS REGISROS
             </h2>
         </template>
         <NoAdminLayout>
@@ -134,7 +134,7 @@ const generatePdf = (idControl) => {
                                         "
                                         class="hidden inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-green-800 sm:inline-flex sm:ml-auto shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
                                     >
-                                        Realizar reportes
+                                        IVANIVANIVAN
                                     </Link>
                                 </div>
                             </div>

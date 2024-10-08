@@ -35,6 +35,6 @@ class PDFController extends Controller
         $html = view('myPDF', $data)->with(['imagePath' => $imagePath])->render();
         $pdf->loadHTML($html);
 
-        return $pdf->download('reporte.pdf');
+        return $pdf->download('reporteMPP.pdf');
     }
 }

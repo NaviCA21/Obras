@@ -27,6 +27,7 @@ class RegistroResource extends JsonResource
             'idControl' => $this->idControl,
             'dni' => $this->dni,
             'visitante' => $this->visitante,
+            'sexo' => $this->sexo,
             'entidad' => $this->entidad,
             'motivo' => $this->motivo,
             'observacion' => $this->observacion,

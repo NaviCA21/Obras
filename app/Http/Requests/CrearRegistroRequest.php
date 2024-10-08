@@ -27,6 +27,7 @@ class CrearRegistroRequest extends FormRequest
             'herramientas.*.nombreHerramienta' => ['required', 'string'],
             'dni' => ['required', 'string', 'max:8', Rule::unique('registros', 'idControl')->ignore($this->registro)],
             'visitante' => ['required', 'string', 'max:255'],
+            'sexo' => ['boolean'],
             'entidad' => ['required', 'string'],
             'motivo' => ['string'],
             'observacion' => ['nullable','string'],

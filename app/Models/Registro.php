@@ -14,6 +14,7 @@ class Registro extends Model
     protected $fillable = [
         'dni',
         'visitante',
+        'sexo',
         'entidad',
         'motivo',
         'observacion',
